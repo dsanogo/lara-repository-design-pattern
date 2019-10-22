@@ -2,6 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Comments\CommentRepository;
+use App\Repositories\Comments\CommentRepositoryInterface;
+use App\Repositories\Posts\PostRepository;
+use App\Repositories\Posts\PostRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class BackendServiceProvider extends ServiceProvider
@@ -9,15 +13,12 @@ class BackendServiceProvider extends ServiceProvider
     public function register()
     {
         // Register Post Repository
-        $this->app->bind(
-            'App\Repositories\PostRepositoryInterface',
-            'App\Repositories\PostRepository'
-        );
+        $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
 
         // Register Comment Repository
         $this->app->bind(
-            'App\Repositories\CommentRepositoryInterface',
-            'App\Repositories\CommentRepository'
+            CommentRepositoryInterface::class,
+            CommentRepository::class
         );
     }
 }

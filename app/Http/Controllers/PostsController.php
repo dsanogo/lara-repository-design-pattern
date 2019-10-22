@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Posts\PostRepository;
+use App\Repositories\Posts\PostRepositoryInterface;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    protected $post;
+    private $post;
 
     /**
      * PostController constructor.
      *
      * @param PostRepositoryInterface $post
      */
-    public function __construct(PostRepository $post) 
+    public function __construct(PostRepositoryInterface $post)
     {
         $this->post = $post;
     }
@@ -30,11 +30,11 @@ class PostsController extends Controller
          $data = [
              'posts' => $this->post->all()
          ];
-         
+
          return $data;
      }
 
-     
 
-    
+
+
 }

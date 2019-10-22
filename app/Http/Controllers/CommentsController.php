@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Comments\CommentRepository;
+use App\Repositories\Comments\CommentRepositoryInterface;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
     protected $comment;
 
-    public function __construct(CommentRepository $comment) {
+    public function __construct(CommentRepositoryInterface $comment) {
         $this->comment = $comment;
     }
 

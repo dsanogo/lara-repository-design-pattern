@@ -1,9 +1,8 @@
 <?php
 
-
 namespace App\Repositories\Posts;
 
-interface PostRepositoryInterface 
+interface PostRepositoryInterface
 {
     /**
      * Get a Post by id
