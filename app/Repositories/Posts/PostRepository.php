@@ -24,6 +24,15 @@ class PostRepository implements PostRepositoryInterface {
     }
 
     /**
+     * Get posts for current auth user
+     * @return mixed
+     */
+    public function getUserPosts()
+    {
+      return auth()->user()->posts;
+    }
+
+    /**
      * Delete a post by id
      * @param int
      */
@@ -32,6 +41,16 @@ class PostRepository implements PostRepositoryInterface {
      {
         Post::destroy($post_id);
      }
+
+      /**
+      * Store a new post
+      * @param int
+      * @param array
+      */
+      public function create(array $data)
+      {
+        return Post::create($data);
+      }
 
      /**
       * Update a post

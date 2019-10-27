@@ -15,12 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('users', 'UsersController@index');
-Route::get('users/{user_id}', 'UsersController@show');
-Route::get('users/filtered/{name}', 'UsersController@getUsersByName');
-Route::get('posts', 'PostsController@index');
-Route::get('comments', 'CommentsController@index');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth', 'namespace' => 'Dashboard'], function() {
+    Route::resource('posts', 'PostsController');
+});
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
