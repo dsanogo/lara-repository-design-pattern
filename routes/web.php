@@ -20,3 +20,7 @@ Route::get('users/{user_id}', 'UsersController@show');
 Route::get('users/filtered/{name}', 'UsersController@getUsersByName');
 Route::get('posts', 'PostsController@index');
 Route::get('comments', 'CommentsController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
